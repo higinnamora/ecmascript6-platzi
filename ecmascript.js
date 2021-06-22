@@ -1,4 +1,4 @@
-// Default params y concatenación
+// --- Default params y concatenación
 // Antes
 function newFuction(name, age, contry) {
   var name = name || 'ginna';
@@ -25,7 +25,7 @@ console.log(epicPhrase);
 let epicPhrase2 = `${hello} ${world}`
 console.log(epicPhrase2)
 
-// Let y Const, Multilinea, Spread Operator y Desestructuracion
+// --- Let y Const, Multilinea, Spread Operator y Desestructuracion
 
 //Antes multilinea
 let lorem = 'Quiero escribir una frase epica \n'
@@ -52,7 +52,7 @@ console.log(person.name, person.age, person.country);
 let {age, country} = person;
 console.log (age, country);
 
-// Propagacion, nos permite expandir varios elementos
+// --- Propagacion, nos permite expandir varios elementos
 
 let team1 = ['Ginna', 'Julian', 'Michi'];
 let team2 = ['Valentina', 'Petra', 'Larry'];
@@ -76,3 +76,57 @@ console.log(globalVar);
 const a = 'b';
 a = 'a';
 console.log(a);
+
+// ---- Arrow Functions, Promesas y Parámetros en objetos
+// Antes es5
+let name = 'Ginna';
+let age = 19;
+
+obj = { name: name, age: age };
+// Ecmascript+6
+obj2 = {name, age};
+console.log(obj2)
+
+// Arrow functions
+const names = [
+  {name: 'Ginna', age: 19,},
+  {name: 'Julian', age: 30}
+]
+// antes funcion anonima
+let listOfNames = names.map(function(item) {
+  console.log(item.name);
+})
+// ecmascript+6 la funcion anonima pasa por el => y retorana algo
+let listOfNames = names.map(item => console.log(item.name));
+
+const listOfNames3 = (name, age, country) => {
+  ... // lo que necesito
+}
+
+// Solo un parametro
+const listNames4 = name => {
+  ... // lo que necesito
+}
+
+// Permite sin llaves y sin return que funcione y devuelva 
+const square = num => num * num;
+
+// Promesas. Js no ejecuta cosas al mismo tiempo, va de un elmento en un elemento. 
+// Algo va a pasar = Promesa
+const helloPromise = () => {
+  return new Promise((resolve, reject) => {
+    if(true){
+      resolve('Hey!');
+    } else {
+      reject('Ups!!');
+    }
+  });
+}
+// Pasos de promesa: 1. Asiganamos una funcion arrary function 2. Retornamos una Promesa 3. Algo va a pasar
+
+helloPromise()
+ .then(response => console.log(response))
+ .then(() => console.log('hola')) // añadi por probar
+ .catch(error => console.log(error));
+
+// Se pueden añadir mas then en la promesa
